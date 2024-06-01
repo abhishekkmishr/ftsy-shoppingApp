@@ -818,7 +818,6 @@
 
 
 
-
 import React, { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import StarIcon from "@mui/icons-material/Star";
@@ -832,17 +831,21 @@ import jewelryImage from '../../assets/images/jewelryImage.jpeg';
 import allImage from '../../assets/images/allImage.jpeg';
 
 const Products = () => {
+  // Fetching data using useLoaderData hook
   const data = useLoaderData();
   const productsData = data.data;
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // State to keep track of the selected category
   const [category, setCategory] = useState("all");
 
+  // Function to filter products based on the selected category
   const filterProducts = (category) => {
     setCategory(category);
   };
 
+  // Filtered products based on the selected category
   const filteredProducts =
     category === "all"
       ? productsData
@@ -980,6 +983,7 @@ const Products = () => {
               </div>
               <button
                 onClick={(e) => {
+                  // Prevent event from bubbling to the parent div
                   e.stopPropagation();
                   dispatch(
                     addToCart({
@@ -1007,5 +1011,3 @@ const Products = () => {
 };
 
 export default Products;
-
-

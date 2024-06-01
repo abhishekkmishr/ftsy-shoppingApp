@@ -10,6 +10,7 @@ const FooterMiddle = () => {
       <div className="w-full border-b-[1px] border-gray-500 py-10">
         <div className="max-w-5xl mx-auto text-gray-300">
           <div className="w-full grid grid-cols-1 md:grid-cols-2 lgl:grid-cols-4 place-items-center items-start px-6 gap-10 lgl:gap-4">
+            {/* Map through the middleList array and render FooterMiddleList components */}
             {middleList.map((item) => (
               <FooterMiddleList
                 key={item._id}
@@ -21,11 +22,14 @@ const FooterMiddle = () => {
         </div>
       </div>
       {/* ======================= Middle Top End here ============================ */}
+      
       {/* ======================= Middle Bottom Start here ======================= */}
       <div className="w-full flex gap-6 items-center justify-center py-6">
+        {/* Logo */}
         <div>
           <img className="w-20 pt-3" src={logo} alt="logo" />
         </div>
+        {/* Language and location selector */}
         <div className="flex gap-2">
           <p className="flex gap-1 items-center justify-center border border-gray-500 hover:border-amazon_yellow cursor-pointer duration-200 px-2 py-1">
             English
@@ -37,15 +41,24 @@ const FooterMiddle = () => {
         </div>
       </div>
       {/* ======================= Middle Bottom End here ========================= */}
+      
       {/* ============ Top Start here ================== */}
+      {/* Placeholder for additional top content */}
       {/* ============ Top End here ==================== */}
+      
       {/* ============ Bottom Start here =============== */}
+      {/* Placeholder for additional bottom content */}
       {/* ============ Bottom End here ================= */}
     </div>
   );
 };
 
 export default FooterMiddle;
+
+
+
+
+
 
 
 

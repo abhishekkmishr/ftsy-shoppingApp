@@ -63,8 +63,6 @@
 
 
 
-
-
 import React from "react";
 import { FaFacebookF, FaTwitter, FaInstagram, FaPinterestP } from "react-icons/fa";
 import logo from "../../assets/logo.png"; // Adjust the path based on your directory structure
@@ -76,12 +74,14 @@ const Footer = () => {
     <div className="bg-blue-800 text-white py-10">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between flex-wrap">
+          {/* Logo and description */}
           <div className="w-full sm:w-auto mb-6 sm:mb-0">
             <img className="h-10" src={logo} alt="Logo" />
             <p className="mt-2 text-sm text-gray-400">
               Discover unique handmade items, vintage goods, and more from the world’s largest creative marketplace.
             </p>
           </div>
+          {/* Shop section */}
           <div className="w-full sm:w-auto mb-6 sm:mb-0">
             <h2 className="text-lg font-semibold mb-4">Shop</h2>
             <ul className="text-gray-400 space-y-2">
@@ -91,6 +91,7 @@ const Footer = () => {
               <li><Link to="#" className="hover:text-white">Etsy Studio</Link></li>
             </ul>
           </div>
+          {/* Sell section */}
           <div className="w-full sm:w-auto mb-6 sm:mb-0">
             <h2 className="text-lg font-semibold mb-4">Sell</h2>
             <ul className="text-gray-400 space-y-2">
@@ -99,6 +100,7 @@ const Footer = () => {
               <li><Link to="#" className="hover:text-white">Forums</Link></li>
             </ul>
           </div>
+          {/* About section */}
           <div className="w-full sm:w-auto mb-6 sm:mb-0">
             <h2 className="text-lg font-semibold mb-4">About</h2>
             <ul className="text-gray-400 space-y-2">
@@ -112,12 +114,14 @@ const Footer = () => {
         </div>
         <div className="border-t border-gray-700 mt-10 pt-6">
           <div className="flex justify-between items-center flex-wrap">
+            {/* Social media icons */}
             <div className="flex space-x-6">
               <a href="https://www.facebook.com/" className="text-white-400 hover:text-white"><FaFacebookF /></a>
               <a href="https://x.com/?lang=en" className="text-white-400 hover:text-white"><FaTwitter /></a>
               <a href="https://www.instagram.com/" className="text-white-400 hover:text-white"><FaInstagram /></a>
               {/* <a href="#" className="text-white-400 hover:text-white"><FaPinterestP /></a> */}
             </div>
+            {/* Currency and location */}
             <div className="flex items-center space-x-4 mt-4 sm:mt-0">
               <div className="flex items-center space-x-1 border border-gray-700 p-2 rounded">
                 {/* <img className="w-6" src={indiaFlag} alt="India Flag" /> */}
@@ -129,6 +133,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
+          {/* Footer bottom text */}
           <div className="mt-6 text-center text-gray-400 text-sm">
             <p>&copy; 2024 Etsy, Inc. All rights reserved.</p>
             <p>
@@ -144,3 +149,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

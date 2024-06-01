@@ -187,7 +187,6 @@
 
 
 
-
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
@@ -206,6 +205,8 @@ const Cart = () => {
   const dispatch = useDispatch();
   
   const [totalAmt, setTotalAmt] = useState("");
+  
+  // Calculate total amount when products change
   useEffect(() => {
     let price = 0;
     products.map((item) => {
@@ -218,18 +219,22 @@ const Cart = () => {
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       {products.length > 0 ? (
+        // Render cart items if there are products in the cart
         <div className="container mx-auto grid grid-cols-1 xl:grid-cols-5 gap-8">
+          {/* Cart items */}
           <div className="col-span-4 bg-white p-6 shadow-lg rounded-lg">
             <div className="flex justify-between items-center border-b pb-4">
               <h1 className="text-2xl font-bold text-gray-800">Shopping Cart</h1>
               <h3 className="text-xl font-semibold text-gray-800">Subtotal</h3>
             </div>
             <div>
+              {/* Display each product in the cart */}
               {products.map((item) => (
                 <div
                   key={item.id}
                   className="flex flex-col md:flex-row items-center justify-between border-b py-4"
                 >
+                  {/* Product details */}
                   <div className="md:flex items-center gap-4">
                     <img
                       className="w-40 h-40 object-contain rounded-lg"
@@ -242,6 +247,7 @@ const Cart = () => {
                       <p className="text-base text-gray-800">
                         Unit Price: <span className="font-semibold">${item.price}</span>
                       </p>
+                      {/* Quantity control */}
                       <div className="flex items-center gap-2 bg-gray-100 p-2 rounded-md">
                         <p className="text-base">Qty:</p>
                         <button
@@ -258,6 +264,7 @@ const Cart = () => {
                           +
                         </button>
                       </div>
+                      {/* Delete item button */}
                       <button
                         onClick={() => dispatch(deleteItem(item.id))}
                         className="mt-2 py-2 px-4 bg-red-500 text-white rounded-md hover:bg-red-600"
@@ -266,12 +273,14 @@ const Cart = () => {
                       </button>
                     </div>
                   </div>
+                  {/* Total price for each product */}
                   <div className="mt-4 md:mt-0 text-lg font-semibold text-gray-800">
                     ${item.price * item.quantity}
                   </div>
                 </div>
               ))}
             </div>
+            {/* Clear cart button */}
             <div className="mt-4 flex justify-end">
               <button
                 onClick={() => dispatch(resetCart())}
@@ -281,6 +290,7 @@ const Cart = () => {
               </button>
             </div>
           </div>
+          {/* Summary section */}
           <div className="col-span-1 bg-white p-6 shadow-lg rounded-lg">
             <p className="flex items-start text-sm text-gray-600 mb-4">
               <CheckCircleIcon className="text-green-500 mr-2" />
@@ -291,12 +301,14 @@ const Cart = () => {
               <p className="text-gray-800 font-semibold">Total:</p>
               <p className="text-lg font-bold text-gray-800">${totalAmt}</p>
             </div>
+            {/* Proceed to buy button */}
             <button className="w-full py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600">
               Proceed to Buy
             </button>
           </div>
         </div>
       ) : (
+        // Render empty cart message if there are no products in the cart
         <motion.div
           initial={{ y: 70, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -314,6 +326,7 @@ const Cart = () => {
               Your Shopping cart lives to serve. Give it purpose - fill it with
               books, electronics, videos, etc. and make it happy.
             </p>
+            {/* Continue shopping button */}
             <Link to="/">
               <button className="px-6 py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600">
                 Continue Shopping
@@ -327,3 +340,4 @@ const Cart = () => {
 };
 
 export default Cart;
+

@@ -332,7 +332,6 @@
 
 
 
-
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useLoaderData } from "react-router-dom";
@@ -350,16 +349,24 @@ import { logo } from "../../assets/index";
 import HeaderBottom from "./HeaderBottom";
 
 const Header = () => {
+  // Redux selectors
   const cart = useSelector((state) => state.amazonReducer.products);
+  const userInfo = useSelector((state) => state.amazonReducer.userInfo);
+
+  // Data loaded with useLoaderData
   const data = useLoaderData();
   const products = data.data;
-  const userInfo = useSelector((state) => state.amazonReducer.userInfo);
+
+  // Ref for handling click outside functionality
   const ref = useRef();
+
+  // State for managing visibility of dropdown menus and search results
   const [showAll, setShowAll] = useState(false);
   const [showCategories, setShowCategories] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
 
+  // Effect to handle click outside functionality
   useEffect(() => {
     document.body.addEventListener("click", (e) => {
       if (e.target.contains(ref.current)) {
@@ -369,6 +376,7 @@ const Header = () => {
     });
   }, [ref, showAll, showCategories]);
 
+  // Function to handle search
   const handleSearch = (e) => {
     const query = e.target.value.toLowerCase();
     setSearchQuery(query);
@@ -385,6 +393,7 @@ const Header = () => {
 
   return (
     <div className="sticky top-0 z-50 bg-white shadow-md">
+      {/* Header content */}
       <div className="w-full text-gray-700 px-4 py-3 flex justify-between items-center">
         {/* Etsy Logo */}
         <Link to="/">
@@ -392,7 +401,7 @@ const Header = () => {
             <img className="w-24 mt-2" src={logo} alt="logoImage" />
           </div>
         </Link>
-        {/* Categories */}
+        {/* Categories Dropdown */}
         <div className="hidden md:flex items-center headerHover relative">
           <MenuIcon 
             className="cursor-pointer"
@@ -448,12 +457,15 @@ const Header = () => {
         </div>
         {/* Right Icons */}
         <div className="flex items-center space-x-4">
+          {/* Favorites */}
           <Link to="/favorites" className="headerHover">
             <FavoriteBorderIcon />
           </Link>
+          {/* Notifications */}
           <Link to="/notifications" className="headerHover">
             <NotificationsNoneIcon />
           </Link>
+          {/* Profile or Sign In */}
           {userInfo ? (
             <div className="headerHover">
               <PersonOutlineIcon />
@@ -465,12 +477,14 @@ const Header = () => {
               <p className="text-xs font-semibold">Sign in</p>
             </Link>
           )}
+          {/* Cart */}
           <Link to="/cart" className="relative headerHover">
             <ShoppingCartIcon />
             <span className="absolute -top-1 -right-2 text-xs font-semibold bg-orange-500 text-white rounded-full px-1">
               {cart.length > 0 ? cart.length : 0}
             </span>
           </Link>
+          {/* Logout */}
           {userInfo && (
             <div className="headerHover">
               <LogoutIcon />
@@ -478,12 +492,14 @@ const Header = () => {
           )}
         </div>
       </div>
+      {/* Header bottom */}
       <HeaderBottom />
     </div>
   );
 };
 
 export default Header;
+
 
 
 

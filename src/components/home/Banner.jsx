@@ -355,18 +355,26 @@ import './Banner.css';
 
 const Banner = () => {
   return (
+    // Banner container with background color, border, and shadow
     <div className="bg-yellow-100 py-8 border-4 border-black rounded-lg my-8 mx-4 shadow-xl">
+      {/* Max width container with padding and flex layout */}
       <div className="max-w-screen-lg mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center space-x-6">
+        {/* Content section with introducing message, title, and button */}
         <div className="space-y-6">
           <div className="flex items-center space-x-2">
+            {/* Tagline */}
             <span className="bg-blue-500 text-white px-4 py-2 rounded-full text-sm animate-bounce">Introducing Gift Mode</span>
           </div>
+          {/* Title */}
           <h1 className="text-4xl font-bold text-gray-900 animate-fade-in">Extra-special gifting made extra-easy</h1>
+          {/* Call to action button */}
           <button className="bg-black text-white px-6 py-3 rounded-md hover:bg-gray-800 focus:outline-none animate-pulse">
             Shop now
           </button>
         </div>
+        {/* Image carousel section */}
         <div className="relative w-2/3 h-64 overflow-hidden flex space-x-4">
+          {/* First column of images */}
           <div className="flex flex-col space-y-4 animate-slide-up">
             <img className="rounded-lg shadow-md" src={image1} alt="Product 1" />
             <img className="rounded-lg shadow-md" src={image2} alt="Product 2" />
@@ -374,6 +382,7 @@ const Banner = () => {
             <img className="rounded-lg shadow-md" src={image4} alt="Product 4" />
             <img className="rounded-lg shadow-md" src={image7} alt="Product 4" />
           </div>
+          {/* Second column of images */}
           <div className="flex flex-col space-y-4 animate-slide-down">
             <img className="rounded-lg shadow-md" src={image5} alt="Product 5" />
             <img className="rounded-lg shadow-md" src={image6} alt="Product 6" />
@@ -388,4 +397,3 @@ const Banner = () => {
 };
 
 export default Banner;
-

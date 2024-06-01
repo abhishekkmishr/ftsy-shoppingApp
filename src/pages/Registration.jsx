@@ -277,7 +277,6 @@
 
 
 
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
@@ -285,8 +284,9 @@ import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import { darkLogo } from "../assets/index";
 
 const Registration = () => {
-  const auth = getAuth();
+  const auth = getAuth(); // Firebase authentication instance
 
+  // State variables for user input and error handling
   const [clientName, setClientName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -300,6 +300,7 @@ const Registration = () => {
   const [loading, setLoading] = useState(false);
   const [successMsg, setSuccessMsg] = useState("");
 
+  // Event handlers for input fields
   const handleName = (e) => {
     setClientName(e.target.value);
     setErrClientName("");
@@ -320,14 +321,18 @@ const Registration = () => {
     setErrCPassword("");
   };
 
+  // Function to validate email format
   const emailValidation = (email) => {
     return String(email)
       .toLowerCase()
       .match(/^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/);
   };
 
+  // Function to handle user registration
   const handleRegistration = (e) => {
     e.preventDefault();
+
+    // Validation checks for each input field
     if (!clientName) {
       setErrClientName("Enter your name");
     }
@@ -354,6 +359,7 @@ const Registration = () => {
       }
     }
 
+    // If all validations pass, proceed with user creation
     if (
       clientName &&
       email &&
@@ -382,6 +388,7 @@ const Registration = () => {
           setLoading(false);
         });
 
+      // Reset form fields and error messages
       setClientName("");
       setEmail("");
       setPassword("");
@@ -393,6 +400,7 @@ const Registration = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
+      {/* Registration form */}
       <div className="flex-1 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
@@ -404,6 +412,7 @@ const Registration = () => {
             </h2>
           </div>
           <form className="mt-8 space-y-6" onSubmit={handleRegistration}>
+            {/* Input fields */}
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
                 <label htmlFor="client-name" className="sr-only">
@@ -418,6 +427,7 @@ const Registration = () => {
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Your name"
                 />
+                {/* Error message for name field */}
                 {errClientName && (
                   <p className="text-red-600 text-xs font-semibold tracking-wide flex items-center gap-2 mt-1.5">
                     <span className="italic font-extrabold text-base">!</span>
@@ -425,6 +435,7 @@ const Registration = () => {
                   </p>
                 )}
               </div>
+              {/* Email field */}
               <div>
                 <label htmlFor="email-address" className="sr-only">
                   Email address
@@ -438,12 +449,14 @@ const Registration = () => {
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Email address"
                 />
+                {/* Error message for email field */}
                 {errEmail && (
                   <p className="text-red-600 text-xs font-semibold tracking-wide flex items-center gap-2 mt-1.5">
                     <span className="italic font-extrabold text-base">!</span>
                     {errEmail}
                   </p>
                 )}
+                {/* Firebase error message */}
                 {firebaseErr && (
                   <p className="text-red-600 text-xs font-semibold tracking-wide flex items-center gap-2 mt-1.5">
                     <span className="italic font-extrabold text-base">!</span>
@@ -451,6 +464,7 @@ const Registration = () => {
                   </p>
                 )}
               </div>
+              {/* Password field */}
               <div>
                 <label htmlFor="password" className="sr-only">
                   Password
@@ -464,6 +478,7 @@ const Registration = () => {
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Password"
                 />
+                {/* Error message for password field */}
                 {errPassword && (
                   <p className="text-red-600 text-xs font-semibold tracking-wide flex items-center gap-2 mt-1.5">
                     <span className="italic font-extrabold text-base">!</span>
@@ -471,6 +486,7 @@ const Registration = () => {
                   </p>
                 )}
               </div>
+              {/* Confirm password field */}
               <div>
                 <label htmlFor="c-password" className="sr-only">
                   Confirm Password
@@ -484,6 +500,7 @@ const Registration = () => {
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Re-enter Password"
                 />
+                {/* Error message for confirm password field */}
                 {errCPassword && (
                   <p className="text-red-600 text-xs font-semibold tracking-wide flex items-center gap-2 mt-1.5">
                     <span className="italic font-extrabold text-base">!</span>
@@ -492,9 +509,11 @@ const Registration = () => {
                 )}
               </div>
             </div>
+            {/* Password length requirement */}
             <p className="text-xs text-gray-600">
               Passwords must be at least 6 characters.
             </p>
+            {/* Submit button */}
             <div>
               <button
                 type="submit"
@@ -503,9 +522,11 @@ const Registration = () => {
                 Continue
               </button>
             </div>
+            {/* Loading indicator and success message */}
             {loading && <p className="text-center text-indigo-500">Loading...</p>}
             {successMsg && <p className="text-center text-green-500">{successMsg}</p>}
           </form>
+          {/* Additional links */}
           <div className="text-center text-sm text-gray-600">
             <p>
               By continuing, you agree to Etsy's{" "}
@@ -532,6 +553,7 @@ const Registration = () => {
           </div>
         </div>
       </div>
+      {/* Footer */}
       <footer className="bg-gray-50 py-6">
         <div className="flex justify-center space-x-6">
           <Link to="#" className="text-xs text-gray-500 hover:text-gray-900">
@@ -553,3 +575,4 @@ const Registration = () => {
 };
 
 export default Registration;
+

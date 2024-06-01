@@ -173,11 +173,13 @@ import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import { darkLogo } from "../assets/index";
 
 const Signin = () => {
+  // State variables for user input and error handling
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errEmail, setErrEmail] = useState("");
   const [errPassword, setErrPassword] = useState("");
 
+  // Event handlers for input fields
   const handleEmail = (e) => {
     setEmail(e.target.value);
     setErrEmail("");
@@ -188,14 +190,17 @@ const Signin = () => {
     setErrPassword("");
   };
   
+  // Function to handle user login
   const handleLogin = (e) => {
     e.preventDefault();
+    // Validation checks for email and password
     if (!email) {
       setErrEmail("Enter your email");
     }
     if (!password) {
       setErrPassword("Enter your password");
     }
+    // If email and password are provided, log them and reset the fields
     if (email && password) {
       console.log(email, password);
       setEmail("");
@@ -205,6 +210,7 @@ const Signin = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
+      {/* Sign-in form */}
       <div className="flex-1 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
@@ -215,8 +221,10 @@ const Signin = () => {
               Sign in to your account
             </h2>
           </div>
+          {/* Form for email and password */}
           <form className="mt-8 space-y-6" onSubmit={handleLogin}>
             <div className="rounded-md shadow-sm -space-y-px">
+              {/* Email field */}
               <div>
                 <label htmlFor="email-address" className="sr-only">
                   Email address
@@ -231,6 +239,7 @@ const Signin = () => {
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Email address"
                 />
+                {/* Error message for email field */}
                 {errEmail && (
                   <p className="text-red-600 text-xs font-semibold tracking-wide flex items-center gap-2 mt-1.5">
                     <span className="italic font-extrabold text-base">!</span>
@@ -238,6 +247,7 @@ const Signin = () => {
                   </p>
                 )}
               </div>
+              {/* Password field */}
               <div>
                 <label htmlFor="password" className="sr-only">
                   Password
@@ -252,6 +262,7 @@ const Signin = () => {
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Password"
                 />
+                {/* Error message for password field */}
                 {errPassword && (
                   <p className="text-red-600 text-xs font-semibold tracking-wide flex items-center gap-2 mt-1.5">
                     <span className="italic font-extrabold text-base">!</span>
@@ -260,7 +271,7 @@ const Signin = () => {
                 )}
               </div>
             </div>
-
+            {/* Submit button */}
             <div>
               <button
                 type="submit"
@@ -271,6 +282,7 @@ const Signin = () => {
             </div>
           </form>
 
+          {/* Additional links */}
           <div className="text-center text-sm text-gray-600">
             <p>
               By continuing, you agree to Etsy's{" "}
@@ -282,6 +294,7 @@ const Signin = () => {
                 Privacy Notice
               </Link>.
             </p>
+            {/* Help link */}
             <p className="mt-4">
               <ArrowRightIcon className="inline-block mr-1" />{" "}
               <Link to="#" className="font-medium text-indigo-600 hover:text-indigo-500">
@@ -290,6 +303,7 @@ const Signin = () => {
             </p>
           </div>
 
+          {/* Registration link */}
           <div className="mt-6">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
@@ -301,6 +315,7 @@ const Signin = () => {
                 </span>
               </div>
             </div>
+            {/* Button to navigate to registration page */}
             <Link to="/registration">
               <button className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mt-4">
                 Create your Etsy account
@@ -309,6 +324,7 @@ const Signin = () => {
           </div>
         </div>
       </div>
+      {/* Footer */}
       <footer className="w-full bg-gray-100 py-6 flex flex-col items-center">
         <div className="flex space-x-6">
           <Link to="#" className="text-xs text-indigo-600 hover:text-indigo-500">
