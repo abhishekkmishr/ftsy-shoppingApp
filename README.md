@@ -1,3 +1,4 @@
+![image](https://github.com/abhishekkmishr/ftsy-shoppingApp/assets/132117431/50feea24-0171-4f9e-95d4-9bb0f8734bc1)
 # Etsy Clone - Your Go-To Marketplace
 
 
