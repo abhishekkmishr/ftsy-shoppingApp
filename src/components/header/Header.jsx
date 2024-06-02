@@ -335,8 +335,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useLoaderData } from "react-router-dom";
-import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
-import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
+// import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+// import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SearchIcon from "@mui/icons-material/Search";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -499,6 +499,32 @@ const Header = () => {
 };
 
 export default Header;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
