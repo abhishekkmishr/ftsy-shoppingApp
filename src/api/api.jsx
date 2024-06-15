@@ -4,8 +4,7 @@ import axios from "axios";
 export async function productsData() {
   const products = await axios.get(
     "https://fakestoreapiserver.vercel.app/amazonproducts"
-    // "https://community-etsy.p.rapidapi.com/listings/active"
-    // "https://community-etsy.p.rapidapi.com/listings/active"
+
   );
   return products;
 }

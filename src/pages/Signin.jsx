@@ -178,21 +178,25 @@ const Signin = () => {
   const [password, setPassword] = useState("");
   const [errEmail, setErrEmail] = useState("");
   const [errPassword, setErrPassword] = useState("");
+  const [apiErr, setApiErr] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [successMsg, setSuccessMsg] = useState("");
 
   // Event handlers for input fields
   const handleEmail = (e) => {
     setEmail(e.target.value);
     setErrEmail("");
   };
-  
+
   const handlePassword = (e) => {
     setPassword(e.target.value);
     setErrPassword("");
   };
-  
+
   // Function to handle user login
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+
     // Validation checks for email and password
     if (!email) {
       setErrEmail("Enter your email");
@@ -200,11 +204,35 @@ const Signin = () => {
     if (!password) {
       setErrPassword("Enter your password");
     }
-    // If email and password are provided, log them and reset the fields
+
+    // If email and password are provided, proceed with login
     if (email && password) {
-      console.log(email, password);
-      setEmail("");
-      setPassword("");
+      setLoading(true);
+      setApiErr("");
+      try {
+        const response = await fetch('http://localhost:8080/api/user/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email, password }),
+        });
+
+        if (!response.ok) {
+          throw new Error('Login failed');
+        }
+
+        const data = await response.json();
+        console.log('Login successful:', data);
+        setLoading(false);
+        setSuccessMsg("Login Successful");
+        setEmail("");
+        setPassword("");
+      } catch (error) {
+        console.error('Error:', error);
+        setApiErr('Login failed');
+        setLoading(false);
+      }
     }
   };
 
@@ -277,7 +305,7 @@ const Signin = () => {
                 type="submit"
                 className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-                Continue
+                {loading ? "Loading..." : "Continue"}
               </button>
             </div>
           </form>
