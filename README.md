@@ -1,3 +1,17 @@
+Home page
+![image](https://github.com/abhishekkmishr/ftsy-shoppingApp/assets/132117431/50feea24-0171-4f9e-95d4-9bb0f8734bc1)
+component
+![image](https://github.com/abhishekkmishr/ftsy-shoppingApp/assets/132117431/bdd21a7d-87df-44ca-885a-1c0d2bc30f02)
+Search
+![image](https://github.com/abhishekkmishr/ftsy-shoppingApp/assets/132117431/3123b867-7753-441c-8b86-02247e4ef20c)
+cart section
+![image](https://github.com/abhishekkmishr/ftsy-shoppingApp/assets/132117431/6dbee7e5-6021-479f-b913-4955432040bf)
+Registration page
+![image](https://github.com/abhishekkmishr/ftsy-shoppingApp/assets/132117431/7badc10d-9398-4074-b25b-6cce45706625)
+
+
+
+
 # Etsy Clone - Your Go-To Marketplace
 
 
